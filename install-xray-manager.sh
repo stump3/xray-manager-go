@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 echo "🚀 Installing Xray Manager..."
 
@@ -10,16 +10,38 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Скачиваем бинарник
-echo "📥 Downloading binary..."
+# Временная директория
+TMP_DIR=$(mktemp -d)
+cd "$TMP_DIR"
 
-curl -L https://github.com/stump3/xray-manager-go/releases/latest/download/xray-manager-linux-amd64 -o xray-manager
+echo "📥 Downloading latest binary..."
 
-# Делаем исполняемым
+curl -L https://github.com/stump3/xray-manager-go/releases/latest/download/xray-manager -o xray-manager
+
+# Проверка скачивания
+if [ ! -f xray-manager ]; then
+  echo "❌ Failed to download binary"
+  exit 1
+fi
+
 chmod +x xray-manager
 
-# Установка
+echo "🚀 Installing..."
+
 mv xray-manager /usr/local/bin/
 
-echo "✅ Installed!"
+# Очистка
+cd /
+rm -rf "$TMP_DIR"
+
+# Проверка
+if command -v xray-manager >/dev/null 2>&1; then
+  echo "✅ Installation successful!"
+else
+  echo "❌ Installation failed"
+  exit 1
+fi
+
+echo ""
+echo "🎉 Done!"
 echo "👉 xray-manager --help"
