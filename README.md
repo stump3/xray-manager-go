@@ -21,6 +21,16 @@
 
 > ⚠️ В активной разработке
 
+Текущий прогресс:
+
+* [x] CLI-скелет
+* [x] Установочный скрипт
+* [ ] Управление пользователями
+* [ ] Работа с config.json (замена jq)
+* [ ] Генерация ссылок
+* [ ] Протоколы
+* [ ] Лимиты
+
 ---
 
 ## 📦 Установка
@@ -37,7 +47,7 @@ sudo ./install-xray-manager.sh
 
 ---
 
-### ⚡ Альтернатива (в одну команду)
+### ⚡ Установка в одну команду
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/stump3/xray-manager-go/main/install-xray-manager.sh | sudo bash
@@ -67,11 +77,37 @@ xray-manager --help
 
 ---
 
-## 🧪 Проверка
+## 🧪 Примеры использования
+
+### 👤 Пользователи
 
 ```bash
-xray-manager user add
+xray-manager user add --email test --tag vless
+xray-manager user list
+```
+
+---
+
+### 🌐 Протоколы
+
+```bash
 xray-manager protocol list
+```
+
+---
+
+### 📊 Лимиты
+
+```bash
+xray-manager limits check
+```
+
+---
+
+### ⚙️ Система
+
+```bash
+xray-manager system status
 ```
 
 ---
@@ -101,61 +137,6 @@ which xray-manager
 ```bash
 cd ~
 rm -rf xray-manager-go
-```
-
-
-## 📦 Установка
-
-### Сборка из исходников
-
-```bash id="m7z1al"
-git clone https://github.com/stump3/xray-manager-go.git
-cd xray-manager-go
-
-go build -o xray-manager
-```
-
----
-
-### Запуск
-
-```bash id="x1y2qs"
-./xray-manager --help
-```
-
----
-
-## ⚙️ Использование
-
-### 👤 Пользователи
-
-```bash id="9j2vsi"
-xray-manager user add --email test --tag vless
-xray-manager user list
-```
-
----
-
-### 🌐 Протоколы
-
-```bash id="8h1y7b"
-xray-manager protocol list
-```
-
----
-
-### 📊 Лимиты
-
-```bash id="t4x3wr"
-xray-manager limits check
-```
-
----
-
-### ⚙️ Система
-
-```bash id="q2k8np"
-xray-manager system status
 ```
 
 ---
