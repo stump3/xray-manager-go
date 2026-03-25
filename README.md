@@ -25,6 +25,87 @@
 
 ## 📦 Установка
 
+### 🔹 Быстрая установка (рекомендуется)
+
+```bash
+git clone https://github.com/stump3/xray-manager-go.git
+cd xray-manager-go
+
+chmod +x install-xray-manager.sh
+sudo ./install-xray-manager.sh
+```
+
+---
+
+### ⚡ Альтернатива (в одну команду)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/stump3/xray-manager-go/main/install-xray-manager.sh | sudo bash
+```
+
+---
+
+## 🔧 Что делает скрипт
+
+Скрипт автоматически:
+
+* 🔍 проверяет установлен ли Go
+* ⚙️ устанавливает Go (если не установлен)
+* 📦 собирает бинарник `xray-manager`
+* 🚀 устанавливает его в `/usr/local/bin`
+* 🔐 делает команду глобальной
+
+---
+
+## 🚀 Запуск
+
+После установки:
+
+```bash
+xray-manager --help
+```
+
+---
+
+## 🧪 Проверка
+
+```bash
+xray-manager user add
+xray-manager protocol list
+```
+
+---
+
+## ⚠️ Требования
+
+* Ubuntu / Debian
+* root-доступ (sudo)
+
+---
+
+## 🛠 Если что-то пошло не так
+
+Проверь:
+
+```bash
+go version
+which xray-manager
+```
+
+---
+
+## 💡 Совет
+
+После установки можно удалить исходники:
+
+```bash
+cd ~
+rm -rf xray-manager-go
+```
+
+
+## 📦 Установка
+
 ### Сборка из исходников
 
 ```bash id="m7z1al"
