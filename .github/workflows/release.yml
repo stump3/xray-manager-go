@@ -16,7 +16,12 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: 'stable'
+
+      # 🔥 ВАЖНО — добавили это
+      - name: Fix dependencies
+        run: |
+          go mod tidy
 
       - name: Build binary
         run: |
